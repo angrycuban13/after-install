@@ -1,0 +1,14 @@
+# /etc/systemd/system/mnt-data.mount
+[Unit]
+Description=NFS Mount Data
+After=network-online.target
+
+[Mount]
+What=synology.lan:/volume1/data
+Where=/mnt/data
+Type=nfs
+Options=noauto,x-systemd.automount,x-systemd.device-timeout=30,_netdev
+TimeoutSec=30
+
+[Install]
+WantedBy=default.target
